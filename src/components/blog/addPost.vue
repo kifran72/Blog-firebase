@@ -1,5 +1,12 @@
 <template>
-  <q-btn color="green" label="Ajoutez un post" @click="addEvent(event)" />
+  <p v-if="!user">Connectez vous pour écrire un post</p>
+  <q-btn
+    v-if="user"
+    color="green"
+    label="Ajoutez un post"
+    @click="addEvent(event)"
+  />
+
   <!-- <q-card class="bg-green text-white">
       <q-card-actions>
         <q-btn label="Ajouter une tâche" @click="add = true" flat />
@@ -86,9 +93,11 @@ export default {
   mounted() {
     this.event.name = "test";
     this.event.sport = "Tennis";
-    this.event.user.uid = this.$props.user.uid;
-    this.event.user.displayName = this.$props.user.displayName;
-    this.event.user.email = this.$props.user.email;
+    if (this.$props.user) {
+      this.event.user.uid = this.$props.user.uid;
+      this.event.user.displayName = this.$props.user.displayName;
+      this.event.user.email = this.$props.user.email;
+    }
   },
 };
 </script>

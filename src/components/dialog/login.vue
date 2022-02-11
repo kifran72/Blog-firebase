@@ -105,7 +105,7 @@ export default {
         this.showNotif(
           "Bonjour " + googleLogin.user.displayName + " !",
           "green",
-          "bottom-right"
+          "bottom-left"
         );
       }
     },

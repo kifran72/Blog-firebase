@@ -1,17 +1,22 @@
 <template>
-  <q-page padding>
+  <q-page v-if="!spinner" padding>
     <div class="q-pa-md q-gutter-md">
       <h2>Blog</h2>
-      <p v-if="!user" v-cloak>Connectez vous pour écrire un post</p>
-      <AddPost v-else :user="user" :addEvent="addEvent" />
+      <AddPost :user="user" :addEvent="addEvent" />
     </div>
     <PostBlog
       :user="user"
       :posts="posts"
       :removeEvent="removeEvent"
       :modifyEvent="modifyEvent"
-      :spinner="spinner"
     />
+  </q-page>
+  <q-page v-if="spinner" padding>
+    <div class="q-pa-md q-gutter-md">
+      <div class="flex flex-center">
+        <q-spinner color="primary" size="3em" :thickness="2" />
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -98,7 +103,7 @@ export default {
       this.showNotif(
         "Le post " + event.name + " a été crée !",
         "green",
-        "bottom-right"
+        "bottom-left"
       );
     },
     modifyEvent(event) {
@@ -106,7 +111,7 @@ export default {
       this.showNotif(
         "Le post " + event.data.name + " a été modifié !",
         "green",
-        "bottom-right"
+        "bottom-left"
       );
     },
     async removeEvent(event) {
@@ -115,7 +120,7 @@ export default {
       this.showNotif(
         "Le post " + event.data.name + " a été supprimé !",
         "green",
-        "bottom-right"
+        "bottom-left"
       );
     },
   },
@@ -123,11 +128,10 @@ export default {
     return {
       user: null,
       posts: [],
-      spinner: false,
+      spinner: true,
     };
   },
   async mounted() {
-    this.spinner = true;
     const posts = await getPosts();
     if (posts) {
       this.spinner = false;

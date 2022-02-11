@@ -2,7 +2,14 @@
   <q-page padding>
     <div class="q-pa-md q-gutter-sd">
       <h2 class="flex flex-center">A propos</h2>
-
+      <div class="q-pa-md q-gutter-sd">
+        <p v-for="n in 5" :key="n">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil
+          praesentium molestias a adipisci, dolore vitae odit, quidem
+          consequatur optio voluptates asperiores pariatur eos numquam rerum
+          delectus commodi perferendis voluptate?
+        </p>
+      </div>
       <div class="q-pa-md q-gutter-sd">
         <q-parallax
           :speed="0.8"
@@ -10,8 +17,16 @@
           align="center"
           src="https://images5.alphacoders.com/394/394862.jpg"
         >
-          <h3 class="text-white">A vos plumes !</h3>
+          <h3 class="text-white">Comment nous contactez ?</h3>
         </q-parallax>
+      </div>
+      <div class="q-pa-md q-gutter-sd">
+        <p v-for="n in 5" :key="n">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil
+          praesentium molestias a adipisci, dolore vitae odit, quidem
+          consequatur optio voluptates asperiores pariatur eos numquam rerum
+          delectus commodi perferendis voluptate?
+        </p>
       </div>
     </div>
   </q-page>

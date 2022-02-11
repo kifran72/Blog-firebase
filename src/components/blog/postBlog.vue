@@ -1,9 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-md">
     <h2>Posts</h2>
-    <div class="flex flex-center">
-      <q-spinner v-if="spinner" color="primary" size="3em" :thickness="2" />
-    </div>
+
     <q-card v-for="post in posts" :key="post.id" class="bg-blue text-white">
       <q-card-section style="max-width: 80vw">
         <div class="text-h6">{{ post.data.name }}</div>
@@ -25,7 +23,7 @@ import { useQuasar } from "quasar";
 
 export default {
   name: "PostBlog",
-  props: ["user", "posts", "removeEvent", "modifyEvent", "spinner"],
+  props: ["user", "posts", "removeEvent", "modifyEvent"],
 
   setup() {
     const $q = useQuasar();

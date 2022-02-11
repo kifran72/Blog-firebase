@@ -38,7 +38,7 @@ export default {
   methods: {
     logout() {
       logout();
-      this.showNotif("Déconnecté !", "green", "bottom-right");
+      this.showNotif("Déconnecté !", "green", "bottom-left");
     },
   },
   // persist() {
